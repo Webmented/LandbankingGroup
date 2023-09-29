@@ -1,60 +1,29 @@
-<script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
-<script>
-  /* START: Swiper 1 - Swiper Simple Starter 1 */
-  document.querySelectorAll('[swiper="1"]').forEach((sliderComponent) => {
-    const sliderEl = sliderComponent.querySelector('[swiper="slider"]');
-    const buttonNextEl = sliderComponent.querySelector('[swiper="next-button"]');
-    const buttonPrevEl = sliderComponent.querySelector('[swiper="prev-button"]');
-    const paginationEl = sliderComponent.querySelector('[swiper="pagination"]');
-
-    new Swiper(sliderEl, {
-      slidesPerView: 1,
-      spaceBetween: 300,
-      centeredSlides: true,
-      
-      direction: 'horizontal',
-      pagination: {
-        el: paginationEl,
-      },
-      navigation: {
-        nextEl: buttonNextEl,
-        prevEl: buttonPrevEl,
-      },
-      breakpoints: {
-        // when window width is >= 768px
-        768: {
-          spaceBetween: 300,
-        },
-      },
-    });
-  });
-  
 
 gsap.to('.dash', {
-  strokeDashoffset: "-=20", 
-  repeat: -1, 
-  duration: 4, 
-  ease: "none",
-  scrollTrigger: {
-    trigger: ".svg-container",
-    start: "top bottom",
-    end: "bottom top",
-    scrub: 1,
-  },
+    strokeDashoffset: "-=20",
+    repeat: -1,
+    duration: 4,
+    ease: "none",
+    scrollTrigger: {
+        trigger: ".svg-container",
+        start: "top bottom",
+        end: "bottom top",
+        scrub: 1,
+    },
 });
 
 gsap.to('.circle', {
-  scale: 1,
-  repeat: -1, 
-  yoyo: true,
-  duration: 2, 
-  ease: "sine.inOut",
-  scrollTrigger: {
-    trigger: ".svg-container",
-    start: "top bottom",
-    end: "bottom top",
-    scrub: 1,
-  },
+    scale: 1,
+    repeat: -1,
+    yoyo: true,
+    duration: 2,
+    ease: "sine.inOut",
+    scrollTrigger: {
+        trigger: ".svg-container",
+        start: "top bottom",
+        end: "bottom top",
+        scrub: 1,
+    },
 });
 
 // Start of the Graphic Animation Script
@@ -108,5 +77,3 @@ gsap.utils.toArray('[vision-element]').forEach((element, index) => {
         { marginBottom: finalMarginBottom, duration: 1.5, ease: "power2.out" }  // ending state with final margin bottom value
     );
 });
-
-</script>
