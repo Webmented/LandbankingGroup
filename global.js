@@ -9,6 +9,7 @@ document.querySelectorAll('[swiper="1"]').forEach((sliderComponent) => {
     slidesPerView: 1,
     spaceBetween: 300,
     centeredSlides: true,
+    initialSlide: 2,
 
     direction: 'horizontal',
     pagination: {
