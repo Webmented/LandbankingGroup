@@ -7,11 +7,11 @@ document.querySelectorAll('[swiper="1"]').forEach((sliderComponent) => {
 
   new Swiper(sliderEl, {
     slidesPerView: 1,
-    spaceBetween: 300,
+    spaceBetween: 200,
     centeredSlides: true,
     initialSlide: 1,
 
-    direction: 'horizontal',
+    direction: "horizontal",
     pagination: {
       el: paginationEl,
     },
@@ -28,7 +28,6 @@ document.querySelectorAll('[swiper="1"]').forEach((sliderComponent) => {
   });
 });
 
-
 // GSAP animations for circles
 gsap.from("#circle1", { duration: 4, scale: 1.5, ease: "power1.out" });
 gsap.from("#circle2", {
@@ -38,7 +37,7 @@ gsap.from("#circle2", {
   scale: 0.5,
   ease: "power1.out",
   onComplete: rotateInfinite,
-  onCompleteParams: ["#circle2"]
+  onCompleteParams: ["#circle2"],
 });
 
 // Function to apply infinite rotation to an element
@@ -48,18 +47,18 @@ function rotateInfinite(element) {
     rotation: 360,
     repeat: -1,
     ease: "none",
-    transformOrigin: "50% 50%"
+    transformOrigin: "50% 50%",
   });
 }
 
 // ScrollTrigger settings
-const hero = document.getElementById('hero');
-const navbar = document.querySelector('.navbar_component');
+const hero = document.getElementById("hero");
+const navbar = document.querySelector(".navbar_component");
 
 ScrollTrigger.create({
-  trigger: 'body',
-  start: () => hero.offsetHeight + ' ' + (0 + navbar.offsetHeight),
-  toggleClass: { targets: navbar, className: 'is-scrolled' },
+  trigger: "body",
+  start: () => hero.offsetHeight + " " + (0 + navbar.offsetHeight),
+  toggleClass: { targets: navbar, className: "is-scrolled" },
   markers: false,
 });
 
@@ -100,8 +99,8 @@ function updateNavbar() {
     // Set navbar styles for when hero section is partially visible
     navbar.style.backgroundColor = "transparent";
     navbar.style.color = "white";
-    logoLinks.forEach(logo => logo.style.color = "white");
-    buttons.forEach(button => button.classList.add("is-alternate"));
+    logoLinks.forEach((logo) => (logo.style.color = "white"));
+    buttons.forEach((button) => button.classList.add("is-alternate"));
 
     // Set menu icon line colors to white
     menuTopLine.style.backgroundColor = "white";
@@ -116,8 +115,8 @@ function updateNavbar() {
     // Set navbar styles for when hero section is not visible
     navbar.style.backgroundColor = "white";
     navbar.style.color = "black";
-    logoLinks.forEach(logo => logo.style.color = "#1e4b3e");
-    buttons.forEach(button => button.classList.remove("is-alternate"));
+    logoLinks.forEach((logo) => (logo.style.color = "#1e4b3e"));
+    buttons.forEach((button) => button.classList.remove("is-alternate"));
 
     // Set menu icon line colors to black
     menuTopLine.style.backgroundColor = "black";
@@ -150,8 +149,9 @@ gsap.registerPlugin(ScrollTrigger);
 const navbarTrigger = document.querySelector(".w-nav-button");
 
 function toggleNavbarTriggerAnimation() {
-  const navOverlay = document.querySelector('.w-nav-overlay');
-  const isNavOverlayHidden = window.getComputedStyle(navOverlay).display === 'none';
+  const navOverlay = document.querySelector(".w-nav-overlay");
+  const isNavOverlayHidden =
+    window.getComputedStyle(navOverlay).display === "none";
 
   if (isNavOverlayHidden) {
     navbar.classList.add("is-open");
@@ -161,7 +161,7 @@ function toggleNavbarTriggerAnimation() {
 }
 
 // Event listener for navbar trigger button click to toggle animation
-navbarTrigger.addEventListener('click', toggleNavbarTriggerAnimation);
+navbarTrigger.addEventListener("click", toggleNavbarTriggerAnimation);
 
 // Initial call to update navbar styles based on initial page load state
 updateNavbar();
@@ -181,27 +181,30 @@ document.addEventListener("DOMContentLoaded", () => {
     translateY: 0,
     duration: 1,
     stagger: 0.2,
-    ease: 'power2.out',
+    ease: "power2.out",
   });
 });
 
 // Scroll into view animations
-gsap.utils.toArray('[data-scroll-animation="fade-in-up"]').forEach((element) => {
-  gsap.fromTo(element,
-    { opacity: 0, translateY: 20 },
-    {
-      scrollTrigger: {
-        trigger: element,
-        start: 'top 80%',
-        end: 'bottom 20%',
-      },
-      opacity: 1,
-      translateY: 0,
-      duration: 1,
-      ease: 'power2.out',
-    }
-  );
-});
+gsap.utils
+  .toArray('[data-scroll-animation="fade-in-up"]')
+  .forEach((element) => {
+    gsap.fromTo(
+      element,
+      { opacity: 0, translateY: 20 },
+      {
+        scrollTrigger: {
+          trigger: element,
+          start: "top 80%",
+          end: "bottom 20%",
+        },
+        opacity: 1,
+        translateY: 0,
+        duration: 1,
+        ease: "power2.out",
+      }
+    );
+  });
 
 // Function to start the marquee animation
 function startMarquee() {
@@ -212,22 +215,21 @@ function startMarquee() {
     // On complete, reset the position and restart the animation
     onComplete: () => {
       tl.restart();
-    }
+    },
   });
 
   // Add animation to the timeline
   tl.to(logoElement, {
-    x: '0rem', // Target position
+    x: "0rem", // Target position
     duration: 40, // Adjust the duration as needed
-    ease: 'linear' // Linear easing for a constant speed
+    ease: "linear", // Linear easing for a constant speed
   });
 }
 
 // Start the marquee animation
 startMarquee();
 
-
-gsap.to('.dash', {
+gsap.to(".dash", {
   strokeDashoffset: "-=20",
   repeat: -1,
   duration: 4,
@@ -240,7 +242,7 @@ gsap.to('.dash', {
   },
 });
 
-gsap.to('.circle', {
+gsap.to(".circle", {
   scale: 1,
   repeat: -1,
   yoyo: true,
@@ -264,20 +266,20 @@ function getMarginBottomValues() {
 
   if (window.innerWidth <= 576) {
     // XS breakpoint
-    initialMarginBottom = '-2rem';
-    finalMarginBottom = '0rem';
+    initialMarginBottom = "-2rem";
+    finalMarginBottom = "0rem";
   } else if (window.innerWidth <= 768) {
     // SM breakpoint
-    initialMarginBottom = '-6rem';
-    finalMarginBottom = '0rem';
+    initialMarginBottom = "-6rem";
+    finalMarginBottom = "0rem";
   } else if (window.innerWidth <= 992) {
     // MD breakpoint
-    initialMarginBottom = '-8.4rem';
-    finalMarginBottom = '0rem';
+    initialMarginBottom = "-8.4rem";
+    finalMarginBottom = "0rem";
   } else {
     // LG and XL breakpoints
-    initialMarginBottom = '-12.4rem';
-    finalMarginBottom = '-8rem';
+    initialMarginBottom = "-12.4rem";
+    finalMarginBottom = "-8rem";
   }
 
   return { initialMarginBottom, finalMarginBottom };
@@ -286,9 +288,9 @@ function getMarginBottomValues() {
 // Create a new GSAP timeline
 let mainTimeline = gsap.timeline({
   scrollTrigger: {
-    trigger: '[vision-element]',
-    start: 'top bottom-=20%',
-    end: 'bottom top',
+    trigger: "[vision-element]",
+    start: "top bottom-=20%",
+    end: "bottom top",
     scrub: true,
     markers: false,
   },
@@ -298,10 +300,10 @@ let mainTimeline = gsap.timeline({
 const { initialMarginBottom, finalMarginBottom } = getMarginBottomValues();
 
 // Animation for vision-element
-gsap.utils.toArray('[vision-element]').forEach((element, index) => {
+gsap.utils.toArray("[vision-element]").forEach((element, index) => {
   mainTimeline.fromTo(
     element,
-    { marginBottom: initialMarginBottom },  // starting state with initial margin bottom value
-    { marginBottom: finalMarginBottom, duration: 1.5, ease: "power2.out" }  // ending state with final margin bottom value
+    { marginBottom: initialMarginBottom }, // starting state with initial margin bottom value
+    { marginBottom: finalMarginBottom, duration: 1.5, ease: "power2.out" } // ending state with final margin bottom value
   );
 });
